@@ -1,0 +1,11 @@
+[configuration]
+
+entry_symbol = "zlebcore_init"
+compatibility_minimum = "4.5"
+reloadable = true
+
+[libraries]
+windows.debug.x86_64 = "res://bin/libzlebcore.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://bin/libzlebcore.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "res://bin/libzlebcore.linux.template_debug.dev.x86_64.so"
+linux.release.x86_64 = "res://bin/libzlebcore.linux.template_release.x86_64.so"

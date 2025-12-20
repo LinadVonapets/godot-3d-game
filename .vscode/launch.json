@@ -1,0 +1,13 @@
+{
+   "version": "0.2.0",
+   "configurations": [
+   {
+      "name": "(gdb) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "/home/linadvonapets/projects/godot/godot/bin/godot.linuxbsd.editor.x86_64",
+      "args": ["--editor", "--path", "/home/linadvonapets/projects/godot/my_first_project/squash_the_creeps"],
+      "cwd": "${workspaceFolder}",
+   }
+   ]
+}

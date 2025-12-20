@@ -1,0 +1,10 @@
+.env/*
+*.dll
+*.so
+*.os
+.godot
+*.import
+.editorconfig
+.sconsign.dblite
+extension_api.json
+*.uid

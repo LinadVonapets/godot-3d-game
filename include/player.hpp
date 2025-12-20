@@ -1,0 +1,43 @@
+#ifndef __PLAYER_HPP
+#define __PLAYER_HPP
+
+#include <godot_cpp/classes/character_body3d.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+#include <godot_cpp/classes/input.hpp>
+
+namespace godot {
+
+class Player : public CharacterBody3D {
+    GDCLASS(Player, CharacterBody3D)
+protected:
+    static void _bind_methods();
+
+private:
+    Input* m_input;
+
+
+    int speed = 14;
+    int fall_acceleration = 75;
+    int jump_impulse = 20;
+    Vector3 target_velocity;
+
+public:
+    void set_speed(const int speed) { this->speed = speed; }
+    int get_speed() const { return this->speed; }   
+    
+    void set_fall_acceleration(const int fall_acceleration) { this->fall_acceleration = fall_acceleration; }
+    int get_fall_acceleration() const {return this->fall_acceleration; }
+
+    void set_jump_impulse(const int jump_impulse) { this->jump_impulse = jump_impulse; }
+    int get_jump_impulse() const { return this->jump_impulse; }
+
+    void _physics_process(double delta) override;
+
+public:
+    Player();
+
+};
+
+}
+
+#endif
