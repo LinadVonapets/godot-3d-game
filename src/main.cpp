@@ -1,6 +1,7 @@
 #include "main.hpp"
 #include "mob.hpp"
 #include "player.hpp"
+#include "score_label.hpp"
 
 #include <godot_cpp/classes/path_follow3d.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -53,7 +54,8 @@ void Main::_on_mob_timer_timeout() {
     Vector3 player_position = get_node<Player>("Player")->get_position();
 
     mob->initialize(mob_spawn_location->get_position(), player_position);
-    
+    mob->connect("squashed", Callable(get_node<ScoreLabel>("UserInterface/ScoreLabel"), "_on_mob_squashed"));
+
     add_child(mob);
 }
 
