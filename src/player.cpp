@@ -14,6 +14,10 @@ void Player::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_jump_impulse"), &Player::get_jump_impulse);
     ClassDB::bind_method(D_METHOD("set_jump_impulse", "jump_impulse"), &Player::set_jump_impulse);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "Jump Impulse"), "set_jump_impulse", "get_jump_impulse");
+    
+    ClassDB::bind_method(D_METHOD("get_bounce_impulse"), &Player::get_bounce_impulse);
+    ClassDB::bind_method(D_METHOD("set_bounce_impulse", "bounce_impulse"), &Player::set_bounce_impulse);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Bounce Impulse"), "set_bounce_impulse", "get_bounce_impulse");
 }
 
 void Player::set_speed(const int speed) { 
@@ -38,6 +42,14 @@ void Player::set_jump_impulse(const int jump_impulse) {
 
 int Player::get_jump_impulse() const { 
     return this->jump_impulse; 
+}
+
+void Player::set_bounce_impulse(const int bounce_impulse) { 
+    this->bounce_impulse = bounce_impulse; 
+}
+
+int Player::get_bounce_impulse() const { 
+    return this->bounce_impulse; 
 }
 
 Player::Player() {

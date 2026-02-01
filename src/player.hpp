@@ -19,6 +19,7 @@ private:
     int speed = 14;
     int fall_acceleration = 75;
     int jump_impulse = 20;
+    int bounce_impulse = 16;
     Vector3 target_velocity;
 
 public:
@@ -30,6 +31,9 @@ public:
 
     void set_jump_impulse(const int jump_impulse);
     int get_jump_impulse() const;
+
+    void set_bounce_impulse(const int bounce_impulse);
+    int get_bounce_impulse() const;
 
     void _physics_process(double delta) override;
 
