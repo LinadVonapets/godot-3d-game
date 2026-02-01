@@ -5,6 +5,7 @@
 #include <godot_cpp/classes/path_follow3d.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/timer.hpp>
 
 
 using namespace godot;
@@ -24,6 +25,7 @@ void Main::_bind_methods() {
     );
 
     ClassDB::bind_method(D_METHOD("_on_mob_timer_timeout"), &Main::_on_mob_timer_timeout);
+    ClassDB::bind_method(D_METHOD("_on_player_hit"), &Main::_on_player_hit);
 }
 
 Ref<PackedScene> Main::get_mob_scene() const { 
@@ -53,5 +55,9 @@ void Main::_on_mob_timer_timeout() {
     mob->initialize(mob_spawn_location->get_position(), player_position);
     
     add_child(mob);
+}
+
+void Main::_on_player_hit() {
+    get_node<Timer>("MobTimer")->stop();
 }
 

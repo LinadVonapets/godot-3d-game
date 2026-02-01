@@ -17,7 +17,9 @@ public:
     Ref<PackedScene> get_mob_scene() const;
     void set_mob_scene(Ref<PackedScene> mob_scene);
 
+private:
     void _on_mob_timer_timeout();
+    void _on_player_hit();
 
 };
 
