@@ -1,5 +1,7 @@
 #include "player.hpp"
 
+#include "mob.hpp"
+
 using namespace godot;
 
 void Player::_bind_methods() {
@@ -76,16 +78,31 @@ void Player::_physics_process(double delta) {
     target_velocity.x = direction.x * speed;
     target_velocity.z = direction.z * speed;
 
-    // if (is_on_floor() && m_input->is_action_just_pressed("jump")) {
-    //     target_velocity.y = jump_impulse;
-    // }
-
     if(!is_on_floor()) {
         target_velocity.y -= fall_acceleration * (float)delta;
         
     }
     if (m_input->is_action_just_pressed("jump"))
             target_velocity.y = jump_impulse;
+    
+    for(int index = 0; index < get_slide_collision_count(); index++) {
+        Ref<KinematicCollision3D> collision = get_slide_collision(index);
+
+        Mob* mob = Object::cast_to<Mob>(collision->get_collider());        
+
+        if(mob == nullptr)
+            continue;
+
+        if (mob->is_in_group("mob")) {
+            // Vector up
+            if (Vector3(0, 1, 0).dot(collision->get_normal()) > 0.1) {
+                mob->squash();
+                target_velocity.y = bounce_impulse;
+                break;
+            }
+        }
+
+    }
 
     set_velocity(target_velocity);
     move_and_slide();
