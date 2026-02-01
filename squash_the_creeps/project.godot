@@ -75,10 +75,6 @@ jump={
 3d_physics/layer_2="enemies"
 3d_physics/layer_3="world"
 
-[physics]
-
-3d/physics_engine="Jolt Physics"
-
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
