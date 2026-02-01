@@ -17,6 +17,8 @@ void Mob::_bind_methods() {
     ADD_PROPERTY(PropertyInfo(Variant::INT, "Max Speed"), "set_max_speed", "get_max_speed");
 
     ClassDB::bind_method(D_METHOD("_on_visible_on_screen_enabler_3d_screen_exited"), &Mob::_on_visible_on_screen_enabler_3d_screen_exited);
+
+    ADD_SIGNAL(MethodInfo("squashed"));
 }
 
 int Mob::get_min_speed() const { 
@@ -56,6 +58,11 @@ void Mob::initialize(Vector3 start_position, Vector3 player_position) {
             get_rotation().y
         )
     );
+}
+
+void Mob::squash() {
+    emit_signal("squashed");
+    queue_free();
 }
 
 void Mob::_on_visible_on_screen_enabler_3d_screen_exited() {

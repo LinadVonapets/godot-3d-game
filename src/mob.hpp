@@ -26,6 +26,7 @@ public:
 
 public:
     void initialize(Vector3 start_position, Vector3 player_position);
+    void squash();
 
 private:
     void _on_visible_on_screen_enabler_3d_screen_exited();
