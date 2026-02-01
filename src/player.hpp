@@ -22,14 +22,14 @@ private:
     Vector3 target_velocity;
 
 public:
-    void set_speed(const int speed) { this->speed = speed; }
-    int get_speed() const { return this->speed; }   
+    void set_speed(const int speed);
+    int get_speed() const;
     
-    void set_fall_acceleration(const int fall_acceleration) { this->fall_acceleration = fall_acceleration; }
-    int get_fall_acceleration() const {return this->fall_acceleration; }
+    void set_fall_acceleration(const int fall_acceleration);
+    int get_fall_acceleration() const;
 
-    void set_jump_impulse(const int jump_impulse) { this->jump_impulse = jump_impulse; }
-    int get_jump_impulse() const { return this->jump_impulse; }
+    void set_jump_impulse(const int jump_impulse);
+    int get_jump_impulse() const;
 
     void _physics_process(double delta) override;
 

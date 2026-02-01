@@ -26,6 +26,14 @@ void Main::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_mob_timer_timeout"), &Main::_on_mob_timer_timeout);
 }
 
+Ref<PackedScene> Main::get_mob_scene() const { 
+    return this->mob_scene; 
+}
+
+void Main::set_mob_scene(Ref<PackedScene> mob_scene) { 
+    this->mob_scene = mob_scene; 
+}
+
 void Main::_on_mob_timer_timeout() {
 
     if (mob_scene.is_null()) {

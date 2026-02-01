@@ -16,11 +16,11 @@ public:
     int max_speed = 18;
 
 public:
-    int get_min_speed() const { return this->min_speed; }
-    void set_min_speed(const int min_speed) { this->min_speed = min_speed; }
+    int get_min_speed() const;
+    void set_min_speed(const int min_speed);
 
-    int get_max_speed() const { return this->max_speed; }
-    void set_max_speed(const int max_speed) { this->max_speed = max_speed; }
+    int get_max_speed() const;
+    void set_max_speed(const int max_speed);
 
     void _physics_process(double delta) override;
 

@@ -16,6 +16,30 @@ void Player::_bind_methods() {
     ADD_PROPERTY(PropertyInfo(Variant::INT, "Jump Impulse"), "set_jump_impulse", "get_jump_impulse");
 }
 
+void Player::set_speed(const int speed) { 
+    this->speed = speed; 
+}
+
+int Player::get_speed() const { 
+    return this->speed; 
+}  
+
+void Player::set_fall_acceleration(const int fall_acceleration) { 
+    this->fall_acceleration = fall_acceleration; 
+}
+
+int Player::get_fall_acceleration() const {
+    return this->fall_acceleration;
+}
+
+void Player::set_jump_impulse(const int jump_impulse) { 
+    this->jump_impulse = jump_impulse; 
+}
+
+int Player::get_jump_impulse() const { 
+    return this->jump_impulse; 
+}
+
 Player::Player() {
     m_input = Input::get_singleton();
 }

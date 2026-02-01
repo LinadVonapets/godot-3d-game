@@ -14,8 +14,8 @@ protected:
 
 public:
     Ref<PackedScene> mob_scene;
-    Ref<PackedScene> get_mob_scene() const { return this->mob_scene; }
-    void set_mob_scene(Ref<PackedScene> mob_scene) { this->mob_scene = mob_scene; }
+    Ref<PackedScene> get_mob_scene() const;
+    void set_mob_scene(Ref<PackedScene> mob_scene);
 
     void _on_mob_timer_timeout();
 

@@ -19,6 +19,22 @@ void Mob::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_visible_on_screen_enabler_3d_screen_exited"), &Mob::_on_visible_on_screen_enabler_3d_screen_exited);
 }
 
+int Mob::get_min_speed() const { 
+    return this->min_speed; 
+}
+
+void Mob::set_min_speed(const int min_speed) { 
+    this->min_speed = min_speed; 
+}
+
+int Mob::get_max_speed() const { 
+    return this->max_speed; 
+}
+
+void Mob::set_max_speed(const int max_speed) { 
+    this->max_speed = max_speed; 
+}
+
 void Mob::_physics_process(double delta) {
     move_and_slide();
 }

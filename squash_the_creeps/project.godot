@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="squash_the_creeps"
 run/main_scene="uid://c8e2xc17sg0b4"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
@@ -70,6 +74,10 @@ jump={
 3d_physics/layer_1="player"
 3d_physics/layer_2="enemies"
 3d_physics/layer_3="world"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 
