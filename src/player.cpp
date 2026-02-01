@@ -20,6 +20,11 @@ void Player::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_bounce_impulse"), &Player::get_bounce_impulse);
     ClassDB::bind_method(D_METHOD("set_bounce_impulse", "bounce_impulse"), &Player::set_bounce_impulse);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "Bounce Impulse"), "set_bounce_impulse", "get_bounce_impulse");
+
+    ClassDB::bind_method(D_METHOD("_on_mob_detector_body_entered", "body"), &Player::_on_mob_detector_body_entered);
+
+    ADD_SIGNAL(MethodInfo("hit"));
+
 }
 
 void Player::set_speed(const int speed) { 
@@ -52,10 +57,6 @@ void Player::set_bounce_impulse(const int bounce_impulse) {
 
 int Player::get_bounce_impulse() const { 
     return this->bounce_impulse; 
-}
-
-Player::Player() {
-    m_input = Input::get_singleton();
 }
 
 void Player::_physics_process(double delta) {
@@ -106,4 +107,17 @@ void Player::_physics_process(double delta) {
 
     set_velocity(target_velocity);
     move_and_slide();
+}
+
+Player::Player() {
+    m_input = Input::get_singleton();
+}
+
+void Player::die() {
+    emit_signal("hit");
+    queue_free();
+}
+
+void Player::_on_mob_detector_body_entered(Node3D* body) {
+    die();
 }

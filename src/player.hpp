@@ -37,9 +37,13 @@ public:
 
     void _physics_process(double delta) override;
 
+
 public:
     Player();
+    void die();
 
+private:
+    void _on_mob_detector_body_entered(Node3D* body);
 };
 
 }
