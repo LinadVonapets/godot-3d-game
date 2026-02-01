@@ -3,6 +3,7 @@
 #include "mob.hpp"
 #include "player.hpp"
 #include "main.hpp"
+#include "score_label.hpp"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -13,7 +14,8 @@ using namespace godot;
 void init_module(ModuleInitializationLevel p_level) {
     if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
         return;
-        
+    
+    GDREGISTER_RUNTIME_CLASS(ScoreLabel);
     GDREGISTER_RUNTIME_CLASS(Mob);
     GDREGISTER_RUNTIME_CLASS(Player);
     GDREGISTER_RUNTIME_CLASS(Main);
