@@ -1,17 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://fqhp74c6kuej"]
+[gd_scene format=3 uid="uid://fqhp74c6kuej"]
 
 [ext_resource type="PackedScene" uid="uid://bn5m0vofvhtqk" path="res://art/player.glb" id="1_3vyb7"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_g2els"]
-radius = 0.9786471
+[sub_resource type="SphereShape3D" id="SphereShape3D_3vyb7"]
+radius = 0.7712839
 
-[node name="Player" type="Player"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3vyb7"]
+height = 0.13122559
+radius = 1.0532227
+
+[node name="Player" type="Player" unique_id=2044541285]
 collision_mask = 6
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="Pivot" type="Node3D" parent="." unique_id=692121626]
 
-[node name="Character" parent="Pivot" instance=ExtResource("1_3vyb7")]
+[node name="Character" parent="Pivot" unique_id=1509186794 instance=ExtResource("1_3vyb7")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010293961, 0.49048123, -0.023155928)
-shape = SubResource("SphereShape3D_g2els")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=728463701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025863647, 0.2629209, -0.012320876)
+shape = SubResource("SphereShape3D_3vyb7")
+
+[node name="MobDetector" type="Area3D" parent="." unique_id=1242052683]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MobDetector" unique_id=15793254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13503402, -0.03839606)
+shape = SubResource("CylinderShape3D_3vyb7")
+debug_color = Color(0, 0.5446318, 0.843156, 0.41960785)
+
+[connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]
