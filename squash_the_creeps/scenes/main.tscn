@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c8e2xc17sg0b4"]
 
-[ext_resource type="PackedScene" uid="uid://l3j020gl5gk5" path="res://scenes/mob.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://fqhp74c6kuej" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://l3j020gl5gk5" path="res://scenes/mob.tscn" id="1_sugp2"]
+[ext_resource type="FontFile" uid="uid://dlvp21lnpoo4e" path="res://fonts/Montserrat-Medium.ttf" id="2_0wfyh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
 size = Vector3(60, 2, 60)
@@ -23,8 +24,12 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Theme" id="Theme_sugp2"]
+default_font = ExtResource("2_0wfyh")
+default_font_size = 22
+
 [node name="Main" type="Main" unique_id=1317355608]
-"Mob Scene" = ExtResource("1_0wfyh")
+"Mob Scene" = ExtResource("1_sugp2")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=223241121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -81,6 +86,22 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13,
 [node name="MobTimer" type="Timer" parent="." unique_id=349072919]
 wait_time = 0.5
 autostart = true
+
+[node name="UserInterface" type="Control" parent="." unique_id=207299610]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_sugp2")
+
+[node name="ScoreLabel" type="ScoreLabel" parent="UserInterface" unique_id=222730087]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 24.0
+offset_right = 137.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
