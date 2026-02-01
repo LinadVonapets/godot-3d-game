@@ -5,8 +5,8 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/home/linadvonapets/projects/godot/godot/bin/godot.linuxbsd.editor.x86_64",
-      "args": ["--editor", "--path", "/home/linadvonapets/projects/godot/my_first_project/squash_the_creeps"],
+      "program": "/home/linadvonapets/projects/godot/godot/bin/godot.linuxbsd.editor.dev.x86_64",
+      "args": ["--path", "/home/linadvonapets/projects/godot/godot-3d-game/squash_the_creeps"],
       "cwd": "${workspaceFolder}",
    }
    ]
