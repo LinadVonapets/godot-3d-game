@@ -4,6 +4,7 @@
 #include "player.hpp"
 #include "main.hpp"
 #include "score_label.hpp"
+#include "death_sound.hpp"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -15,6 +16,7 @@ void init_module(ModuleInitializationLevel p_level) {
     if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
         return;
     
+    GDREGISTER_RUNTIME_CLASS(DeathSound);
     GDREGISTER_RUNTIME_CLASS(ScoreLabel);
     GDREGISTER_RUNTIME_CLASS(Mob);
     GDREGISTER_RUNTIME_CLASS(Player);
