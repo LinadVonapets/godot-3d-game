@@ -6,6 +6,7 @@
 size = Vector3(1.5213928, 0.97579956, 1.9780121)
 
 [node name="Mob" type="Mob" unique_id=1617291046 groups=["mob"]]
+"Max Speed" = 15
 collision_layer = 2
 collision_mask = 0
 
