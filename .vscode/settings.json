@@ -1,3 +1,8 @@
 {
-	"editor.tabSize": 4
+	"editor.tabSize": 4,
+	"files.exclude": {
+		"**/*.os": true,
+		"**/*.o": true
+	}
+
 }
