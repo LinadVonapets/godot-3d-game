@@ -7,6 +7,7 @@
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/timer.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
 
 
 using namespace godot;
@@ -37,6 +38,15 @@ void Main::set_mob_scene(Ref<PackedScene> mob_scene) {
     this->mob_scene = mob_scene; 
 }
 
+void Main::_ready() {
+    get_node<Control>("UserInterface/Retry")->hide();
+}
+
+void Main::_unhandled_input(const Ref<InputEvent> &p_event) {
+    if(p_event->is_action_pressed("ui_accept") && get_node<Control>("UserInterface/Retry")->is_visible())
+        get_tree()->reload_current_scene();
+}
+
 void Main::_on_mob_timer_timeout() {
 
     if (mob_scene.is_null()) {
@@ -61,5 +71,6 @@ void Main::_on_mob_timer_timeout() {
 
 void Main::_on_player_hit() {
     get_node<Timer>("MobTimer")->stop();
+    get_node<Control>("UserInterface/Retry")->show();
 }
 

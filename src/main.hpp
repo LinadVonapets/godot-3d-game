@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 
 namespace godot {
 
@@ -16,6 +17,9 @@ public:
     Ref<PackedScene> mob_scene;
     Ref<PackedScene> get_mob_scene() const;
     void set_mob_scene(Ref<PackedScene> mob_scene);
+
+    void _ready() override;
+    void _unhandled_input(const Ref<InputEvent> &p_event) override;
 
 private:
     void _on_mob_timer_timeout();
