@@ -19,6 +19,10 @@ run/main_scene="uid://c8e2xc17sg0b4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicPlayer="*uid://bqp2dc8qpb58c"
+
 [display]
 
 window/size/viewport_width=720
