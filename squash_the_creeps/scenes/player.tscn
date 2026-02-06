@@ -3,30 +3,32 @@
 [ext_resource type="PackedScene" uid="uid://bn5m0vofvhtqk" path="res://art/player.glb" id="1_3vyb7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3vyb7"]
-radius = 0.7712839
+radius = 0.88
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3vyb7"]
-height = 0.13122559
-radius = 0.9580078
+height = 0.397
+radius = 1.105
 
 [node name="Player" type="Player" unique_id=2044541285]
 collision_mask = 6
 
 [node name="Pivot" type="Node3D" parent="." unique_id=692121626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061, 0)
 
 [node name="Character" parent="Pivot" unique_id=1509186794 instance=ExtResource("1_3vyb7")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=728463701]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025863647, 0.29194036, -0.012320876)
+transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 1.001, 0, 0.357, 0)
 shape = SubResource("SphereShape3D_3vyb7")
 
 [node name="MobDetector" type="Area3D" parent="." unique_id=1242052683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28, 0)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MobDetector" unique_id=15793254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22572052, -0.03839606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628, 0)
 shape = SubResource("CylinderShape3D_3vyb7")
 debug_color = Color(0, 0.5446318, 0.843156, 0.41960785)
 
