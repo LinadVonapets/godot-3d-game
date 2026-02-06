@@ -5,10 +5,26 @@
 [ext_resource type="FontFile" uid="uid://dlvp21lnpoo4e" path="res://fonts/Montserrat-Medium.ttf" id="2_0wfyh"]
 [ext_resource type="AudioStream" uid="uid://sn2y7xe6jhnr" path="res://sounds/enemy-death-gaseous-1.wav" id="3_sugp2"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jyhfs"]
+sky_horizon_color = Color(0.64705884, 0.654902, 0.67058825, 1)
+
+[sub_resource type="Sky" id="Sky_tbgi4"]
+sky_material = SubResource("ProceduralSkyMaterial_jyhfs")
+
+[sub_resource type="Environment" id="Environment_tefeu"]
+background_mode = 2
+sky = SubResource("Sky_tbgi4")
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgp6g"]
 size = Vector3(60, 2, 60)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyhfs"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
+lightmap_size_hint = Vector2i(604, 326)
+material = SubResource("StandardMaterial3D_jyhfs")
 size = Vector3(60, 2, 60)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5qli"]
@@ -32,6 +48,9 @@ default_font_size = 22
 [node name="Main" type="Main" unique_id=1317355608]
 "Mob Scene" = ExtResource("1_jyhfs")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=333271458]
+environment = SubResource("Environment_tefeu")
+
 [node name="Ground" type="StaticBody3D" parent="." unique_id=223241121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 4
@@ -44,12 +63,13 @@ shape = SubResource("BoxShape3D_sgp6g")
 mesh = SubResource("BoxMesh_o5qli")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=55167820]
-transform = Transform3D(1, 0, 0, 0, 0.52398586, 0.85172695, 0, -0.85172695, 0.52398586, 0, 9.3281765, 0)
-light_energy = 3.0
+transform = Transform3D(0.96592593, -1.489429e-09, 0.2588191, -0.2588191, -1.1313341e-08, 0.96592593, 1.4894292e-09, -1, -1.1313343e-08, 0, 9.26612, 0)
 shadow_enabled = true
+shadow_bias = 0.2
+sky_mode = 1
 
 [node name="Player" parent="." unique_id=1380150203 instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39572716, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.567, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=373343294]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
@@ -57,8 +77,8 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=991124303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
 projection = 1
-current = true
 size = 19.0
+far = 30.0
 
 [node name="Cylinders" type="Node3D" parent="." unique_id=1248236863]
 
