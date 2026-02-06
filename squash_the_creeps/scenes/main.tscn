@@ -68,7 +68,7 @@ shadow_enabled = true
 shadow_bias = 0.2
 sky_mode = 1
 
-[node name="Player" parent="." unique_id=1380150203 instance=ExtResource("1_o5qli")]
+[node name="Player" parent="." unique_id=2044541285 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.567, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=373343294]
