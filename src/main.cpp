@@ -3,6 +3,7 @@
 #include "player.hpp"
 #include "score_label.hpp"
 #include "death_sound.hpp"
+#include "music_player.hpp"
 
 #include <godot_cpp/classes/path_follow3d.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -30,6 +31,7 @@ void Main::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("_on_mob_timer_timeout"), &Main::_on_mob_timer_timeout);
     ClassDB::bind_method(D_METHOD("_on_player_hit"), &Main::_on_player_hit);
+    ClassDB::bind_method(D_METHOD("_on_retry_button_button_down"), &Main::_on_retry_button_button_down);
 }
 
 Ref<PackedScene> Main::get_mob_scene() const { 
@@ -46,7 +48,7 @@ void Main::_ready() {
 
 void Main::_unhandled_input(const Ref<InputEvent> &p_event) {
     if(p_event->is_action_pressed("ui_accept") && get_node<Control>("UserInterface/Retry")->is_visible())
-        get_tree()->reload_current_scene();
+        this->restart_game();
 }
 
 void Main::_on_mob_timer_timeout() {
@@ -76,5 +78,14 @@ void Main::_on_mob_timer_timeout() {
 void Main::_on_player_hit() {
     get_node<Timer>("MobTimer")->stop();
     get_node<Control>("UserInterface/Retry")->show();
+    get_node<MusicPlayer>("/root/MusicPlayer")->start_pitchdown();
 }
 
+void Main::_on_retry_button_button_down() {
+    this->restart_game();
+}
+
+void Main::restart_game() {
+    get_node<MusicPlayer>("/root/MusicPlayer")->restart();
+    get_tree()->reload_current_scene();
+}

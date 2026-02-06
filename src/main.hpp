@@ -24,6 +24,9 @@ public:
 private:
     void _on_mob_timer_timeout();
     void _on_player_hit();
+    void _on_retry_button_button_down();
+
+    void restart_game();
 
 };
 

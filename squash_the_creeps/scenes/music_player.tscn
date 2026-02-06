@@ -2,6 +2,11 @@
 
 [ext_resource type="AudioStream" uid="uid://bqalxgl36hgyc" path="res://art/output.ogg" id="1_jxdhu"]
 
-[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=887245369]
+[node name="MusicPlayer" type="MusicPlayer" unique_id=1754334801]
 stream = ExtResource("1_jxdhu")
 autoplay = true
+
+[node name="PitchDownTimer" type="Timer" parent="." unique_id=1646836767]
+wait_time = 0.05
+
+[connection signal="timeout" from="PitchDownTimer" to="." method="_on_pitch_down_timer_timeout"]
