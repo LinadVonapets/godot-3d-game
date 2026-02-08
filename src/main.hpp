@@ -6,9 +6,11 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 
-namespace godot {
+namespace godot 
+{
 
-class Main : public Node {
+class Main : public Node 
+{
     GDCLASS(Main, Node);
 protected:
     static void _bind_methods();

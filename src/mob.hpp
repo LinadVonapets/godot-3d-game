@@ -4,9 +4,11 @@
 #include <godot_cpp/classes/character_body3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
 
-namespace godot {
+namespace godot 
+{
 
-class Mob : public CharacterBody3D {
+class Mob : public CharacterBody3D 
+{
     GDCLASS(Mob, CharacterBody3D)
 protected:
     static void _bind_methods();

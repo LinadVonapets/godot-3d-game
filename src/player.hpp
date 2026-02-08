@@ -5,9 +5,11 @@
 #include <godot_cpp/variant/vector3.hpp>
 #include <godot_cpp/classes/input.hpp>
 
-namespace godot {
+namespace godot 
+{
 
-class Player : public CharacterBody3D {
+class Player : public CharacterBody3D 
+{
     GDCLASS(Player, CharacterBody3D)
 protected:
     static void _bind_methods();

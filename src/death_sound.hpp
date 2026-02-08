@@ -3,9 +3,11 @@
 
 #include <godot_cpp/classes/audio_stream_player.hpp>
 
-namespace godot {
+namespace godot 
+{
 
-class DeathSound : public AudioStreamPlayer {
+class DeathSound : public AudioStreamPlayer 
+{
     GDCLASS(DeathSound, AudioStreamPlayer)
 protected:
     static void _bind_methods();

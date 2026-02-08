@@ -3,9 +3,11 @@
 
 #include <godot_cpp/classes/audio_stream_player.hpp>
 
-namespace godot {
+namespace godot 
+{
 
-class MusicPlayer : public AudioStreamPlayer {
+class MusicPlayer : public AudioStreamPlayer 
+{
     GDCLASS(MusicPlayer, AudioStreamPlayer)
 protected:
     static void _bind_methods();

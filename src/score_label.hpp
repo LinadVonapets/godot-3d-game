@@ -3,9 +3,11 @@
 
 #include <godot_cpp/classes/label.hpp>
 
-namespace godot {
+namespace godot 
+{
 
-class ScoreLabel : public Label {
+class ScoreLabel : public Label 
+{
     GDCLASS(ScoreLabel, Label)
 protected:
     static void _bind_methods();

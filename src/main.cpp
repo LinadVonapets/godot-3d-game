@@ -16,7 +16,8 @@
 
 using namespace godot;
 
-void Main::_bind_methods() {
+void Main::_bind_methods() 
+{
     ClassDB::bind_method(D_METHOD("get_mob_scene"), &Main::get_mob_scene);
     ClassDB::bind_method(D_METHOD("set_mob_scene", "mob_scene"), &Main::set_mob_scene);
     ADD_PROPERTY(
@@ -35,24 +36,29 @@ void Main::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_retry_button_button_down"), &Main::_on_retry_button_button_down);
 }
 
-Ref<PackedScene> Main::get_mob_scene() const { 
+Ref<PackedScene> Main::get_mob_scene() const 
+{ 
     return this->mob_scene; 
 }
 
-void Main::set_mob_scene(Ref<PackedScene> mob_scene) { 
+void Main::set_mob_scene(Ref<PackedScene> mob_scene) 
+{ 
     this->mob_scene = mob_scene; 
 }
 
-void Main::_ready() {
+void Main::_ready() 
+{
     get_node<ColorRect>("UserInterface/Retry")->hide();
 }
 
-void Main::_unhandled_input(const Ref<InputEvent> &p_event) {
+void Main::_unhandled_input(const Ref<InputEvent> &p_event) 
+{
     if(p_event->is_action_pressed("ui_accept") && get_node<Control>("UserInterface/Retry")->is_visible())
         this->restart_game();
 }
 
-void Main::_on_mob_timer_timeout() {
+void Main::_on_mob_timer_timeout() 
+{
 
     if (mob_scene.is_null()) {
         print_error("There is no mob_scene property set on Main scene!");
@@ -76,17 +82,20 @@ void Main::_on_mob_timer_timeout() {
     add_child(mob);
 }
 
-void Main::_on_player_hit() {
+void Main::_on_player_hit() 
+{
     get_node<Timer>("MobTimer")->stop();
     get_node<ColorRect>("UserInterface/Retry")->show();
     get_node<MusicPlayer>("/root/MusicPlayer")->start_pitchdown();
 }
 
-void Main::_on_retry_button_button_down() {
+void Main::_on_retry_button_button_down() 
+{
     this->restart_game();
 }
 
-void Main::restart_game() {
+void Main::restart_game() 
+{
     get_node<MusicPlayer>("/root/MusicPlayer")->restart();
     get_tree()->reload_current_scene();
 }
