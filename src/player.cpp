@@ -130,12 +130,9 @@ void Player::die()
     queue_free();
 }
 
-#include <godot_cpp/variant/utility_functions.hpp>
-
 void Player::_on_mob_detector_body_entered(Node3D* body) 
 {
-    if (get_position().dot(body->get_position()) > 0.1) {
-        
+    if (!this->is_on_wall()) {
+       die();
     }
-    die();
 }
