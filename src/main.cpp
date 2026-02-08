@@ -11,6 +11,7 @@
 #include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/audio_stream_player.hpp>
+#include <godot_cpp/classes/color_rect.hpp>
 
 
 using namespace godot;
@@ -43,7 +44,7 @@ void Main::set_mob_scene(Ref<PackedScene> mob_scene) {
 }
 
 void Main::_ready() {
-    get_node<Control>("UserInterface/Retry")->hide();
+    get_node<ColorRect>("UserInterface/Retry")->hide();
 }
 
 void Main::_unhandled_input(const Ref<InputEvent> &p_event) {
@@ -77,7 +78,7 @@ void Main::_on_mob_timer_timeout() {
 
 void Main::_on_player_hit() {
     get_node<Timer>("MobTimer")->stop();
-    get_node<Control>("UserInterface/Retry")->show();
+    get_node<ColorRect>("UserInterface/Retry")->show();
     get_node<MusicPlayer>("/root/MusicPlayer")->start_pitchdown();
 }
 

@@ -45,6 +45,43 @@ point_count = 4
 default_font = ExtResource("2_0wfyh")
 default_font_size = 22
 
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserInterface/Retry:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "opacity_change"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UserInterface/Retry:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.64705884)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbgi4"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"opacity_change": SubResource("Animation_tbgi4")
+}
+
 [node name="Main" type="Main" unique_id=1317355608]
 "Mob Scene" = ExtResource("1_jyhfs")
 
@@ -188,6 +225,10 @@ text = "Score: 0"
 
 [node name="DeathSound" type="DeathSound" parent="." unique_id=497186184]
 stream = ExtResource("3_sugp2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1206558035]
+libraries/ = SubResource("AnimationLibrary_tbgi4")
+autoplay = &"opacity_change"
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
