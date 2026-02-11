@@ -17,7 +17,7 @@ env.Append(CPPPATH=["include"])
 sources = Glob("src/*.cpp")
 
 project_name = "squash_the_creeps"
-libname = "zlebcore"
+libname = "game"
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
