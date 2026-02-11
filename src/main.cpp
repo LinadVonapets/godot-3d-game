@@ -1,7 +1,6 @@
 #include "main.hpp"
 #include "mob.hpp"
 #include "player.hpp"
-#include "score_label.hpp"
 #include "death_sound.hpp"
 #include "music_player.hpp"
 
@@ -33,7 +32,10 @@ void Main::_bind_methods()
 
     ClassDB::bind_method(D_METHOD("_on_mob_timer_timeout"), &Main::_on_mob_timer_timeout);
     ClassDB::bind_method(D_METHOD("_on_player_hit"), &Main::_on_player_hit);
-    ClassDB::bind_method(D_METHOD("_on_retry_button_button_down"), &Main::_on_retry_button_button_down);
+
+    ADD_SIGNAL(MethodInfo("game_over"));
+    ADD_SIGNAL(MethodInfo("mob_squashed"));
+    ClassDB::bind_method(D_METHOD("restart_game"), &Main::restart_game);
 }
 
 Ref<PackedScene> Main::get_mob_scene() const 
@@ -48,13 +50,13 @@ void Main::set_mob_scene(Ref<PackedScene> mob_scene)
 
 void Main::_ready() 
 {
-    get_node<ColorRect>("UserInterface/Retry")->hide();
+    
 }
 
 void Main::_unhandled_input(const Ref<InputEvent> &p_event) 
 {
-    if(p_event->is_action_pressed("ui_accept") && get_node<Control>("UserInterface/Retry")->is_visible())
-        this->restart_game();
+    // if(p_event->is_action_pressed("ui_accept"))
+    //     this->restart_game();
 }
 
 void Main::_on_mob_timer_timeout() 
@@ -77,7 +79,7 @@ void Main::_on_mob_timer_timeout()
     mob->initialize(mob_spawn_location->get_position(), player_position);
 
     mob->connect("squashed", Callable(get_node<DeathSound>("DeathSound"), "_on_mob_squashed"));
-    mob->connect("squashed", Callable(get_node<ScoreLabel>("UserInterface/ScoreLabel"), "_on_mob_squashed"));
+    mob->connect("squashed", Callable(this, "emit_signal").bind("mob_squashed"));
 
     add_child(mob);
 }
@@ -85,13 +87,9 @@ void Main::_on_mob_timer_timeout()
 void Main::_on_player_hit() 
 {
     get_node<Timer>("MobTimer")->stop();
-    get_node<ColorRect>("UserInterface/Retry")->show();
+    emit_signal("game_over");
+    // get_node<ColorRect>("UserInterface/Retry")->show();
     get_node<MusicPlayer>("/root/MusicPlayer")->start_pitchdown();
-}
-
-void Main::_on_retry_button_button_down() 
-{
-    this->restart_game();
 }
 
 void Main::restart_game() 

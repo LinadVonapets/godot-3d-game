@@ -14,7 +14,8 @@ env = SConscript("godot-cpp/SConstruct")
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=["include"])
-sources = Glob("src/*.cpp")
+sources = Glob("src/*.cpp") + \
+          Glob("src/**/*.cpp")
 
 project_name = "squash_the_creeps"
 libname = "game"

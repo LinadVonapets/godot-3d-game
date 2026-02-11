@@ -23,13 +23,10 @@ public:
     void _ready() override;
     void _unhandled_input(const Ref<InputEvent> &p_event) override;
 
+    void restart_game();
 private:
     void _on_mob_timer_timeout();
     void _on_player_hit();
-    void _on_retry_button_button_down();
-
-    void restart_game();
-
 };
 
 } // namespace godot

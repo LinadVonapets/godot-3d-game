@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://cbkmcysx53bfl"]
+
+[ext_resource type="FontFile" uid="uid://dlvp21lnpoo4e" path="res://fonts/Montserrat-Medium.ttf" id="1_nt7q6"]
+
+[sub_resource type="Theme" id="Theme_x4jx1"]
+default_font = ExtResource("1_nt7q6")
+default_font_size = 22
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Retry:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "opacity_change"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Retry:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.64705884)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yev5y"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"opacity_change": SubResource("Animation_tbgi4")
+}
+
+[node name="UserInterface" type="UserInterface" unique_id=1130098056]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_x4jx1")
+
+[node name="Retry" type="ColorRect" parent="." unique_id=975162243]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="RetryShadowing" type="AnimationPlayer" parent="Retry" unique_id=376923102]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_yev5y")
+autoplay = &"opacity_change"
+
+[node name="GameOverLabel" type="Label" parent="Retry" unique_id=1560438523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 168.0
+offset_right = -192.0
+offset_bottom = -316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalScoreLabel" type="Label" parent="Retry" unique_id=652776666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 272.0
+offset_top = 208.0
+offset_right = -288.0
+offset_bottom = -244.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.06, 1.077)
+text = "Total Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Retry" unique_id=1873181636]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = 50.0
+offset_right = 97.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1560581052]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 24.0
+offset_right = 44.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+
+[connection signal="pressed" from="Retry/RetryButton" to="." method="_on_retry_button_pressed"]
