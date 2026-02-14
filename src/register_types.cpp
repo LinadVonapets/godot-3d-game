@@ -10,6 +10,7 @@
 #include "death_sound.hpp"
 #include "music_player.hpp"
 #include "ui/user_interface.hpp"
+#include "ui/main_menu.hpp"
 
 using namespace godot;
 
@@ -17,6 +18,7 @@ void init_module(ModuleInitializationLevel p_level)
 {
     if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
         return;
+    GDREGISTER_RUNTIME_CLASS(MainMenu);
     GDREGISTER_RUNTIME_CLASS(UserInterface);
     GDREGISTER_RUNTIME_CLASS(MusicPlayer);
     GDREGISTER_RUNTIME_CLASS(DeathSound);
