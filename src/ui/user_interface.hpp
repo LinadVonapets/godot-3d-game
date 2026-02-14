@@ -12,13 +12,8 @@ namespace godot
 class UserInterface: public Control
 {
 	GDCLASS(UserInterface, Control);
-protected:
-	static void _bind_methods();
-
 private:
 	int score = 0;
-
-	
 
 public:
 	void _ready() override;
@@ -32,6 +27,9 @@ private:
 	Label* total_score_label;
 	Button* retry_button;
 	ColorRect* retry;
+
+protected:
+	static void _bind_methods();
 };
 
 } // namespace godot

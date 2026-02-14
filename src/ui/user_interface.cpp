@@ -4,15 +4,6 @@
 
 using namespace godot;
 
-void UserInterface::_bind_methods() 
-{
-	ClassDB::bind_method(D_METHOD("increment_score"), &UserInterface::increment_score);
-	ClassDB::bind_method(D_METHOD("show_game_over_screen"), &UserInterface::show_game_over_screen);
-
-	ADD_SIGNAL(MethodInfo("on_retry_pressed"));
-	ClassDB::bind_method(D_METHOD("_on_retry_button_pressed"), &UserInterface::_on_retry_button_pressed);
-}
-
 void UserInterface::_ready()
 {
 	this->retry_button = get_node<Button>("Retry/RetryButton");
@@ -43,3 +34,16 @@ void UserInterface::show_game_over_screen()
 	this->total_score_label->set_text(String("Total Score: {0}").format(Array::make(this->score)));
 }
 
+void UserInterface::_bind_methods() 
+{
+	ClassDB::bind_method(D_METHOD("increment_score"), 
+						&UserInterface::increment_score);
+
+	ClassDB::bind_method(D_METHOD("show_game_over_screen"), 
+						&UserInterface::show_game_over_screen);
+
+	ADD_SIGNAL(MethodInfo("on_retry_pressed"));
+	
+	ClassDB::bind_method(D_METHOD("_on_retry_button_pressed"), 
+						&UserInterface::_on_retry_button_pressed);
+}
