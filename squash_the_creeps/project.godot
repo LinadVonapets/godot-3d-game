@@ -15,9 +15,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="squash_the_creeps"
-run/main_scene="uid://c8e2xc17sg0b4"
+run/main_scene="uid://1fr25rlr24sj"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://c3ufqbwq8l1r1"
 
 [autoload]
 
