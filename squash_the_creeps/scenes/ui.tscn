@@ -63,7 +63,6 @@ color = Color(0, 0, 0, 0)
 [node name="RetryShadowing" type="AnimationPlayer" parent="Retry" unique_id=376923102]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_yev5y")
-autoplay = &"opacity_change"
 
 [node name="GameOverLabel" type="Label" parent="Retry" unique_id=1560438523]
 layout_mode = 1

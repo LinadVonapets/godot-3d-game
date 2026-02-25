@@ -1,6 +1,7 @@
 #include "user_interface.hpp"
 
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
 
 using namespace godot;
 
@@ -30,6 +31,7 @@ void UserInterface::increment_score()
 void UserInterface::show_game_over_screen() 
 {
 	this->retry->show();
+	get_node<AnimationPlayer>("Retry/RetryShadowing")->play("opacity_change");
 	this->score_label->hide();
 	this->total_score_label->set_text(String("Total Score: {0}").format(Array::make(this->score)));
 }
