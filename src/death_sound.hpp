@@ -9,11 +9,11 @@ namespace godot
 class DeathSound : public AudioStreamPlayer 
 {
     GDCLASS(DeathSound, AudioStreamPlayer)
-protected:
-    static void _bind_methods();
-
 private:
 	void _on_mob_squashed();
+
+protected:
+    static void _bind_methods();
 };
 
 } // namespace godot

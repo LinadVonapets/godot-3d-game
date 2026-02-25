@@ -12,9 +12,6 @@ namespace godot
 class Main : public Node 
 {
     GDCLASS(Main, Node);
-protected:
-    static void _bind_methods();
-
 public:
     Ref<PackedScene> mob_scene;
     Ref<PackedScene> get_mob_scene() const;
@@ -27,6 +24,9 @@ public:
 private:
     void _on_mob_timer_timeout();
     void _on_player_hit();
+
+protected:
+    static void _bind_methods();
 };
 
 } // namespace godot

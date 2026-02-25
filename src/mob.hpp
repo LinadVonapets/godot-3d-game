@@ -10,9 +10,6 @@ namespace godot
 class Mob : public CharacterBody3D 
 {
     GDCLASS(Mob, CharacterBody3D)
-protected:
-    static void _bind_methods();
-
 public:
     int min_speed = 10;
     int max_speed = 18;
@@ -32,6 +29,9 @@ public:
 
 private:
     void _on_visible_on_screen_enabler_3d_screen_exited();
+
+protected:
+    static void _bind_methods();
 };
 
 } // namespace godot

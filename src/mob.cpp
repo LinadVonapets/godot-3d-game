@@ -8,21 +8,6 @@ using namespace godot;
 
 using uf = UtilityFunctions;
 
-void Mob::_bind_methods() 
-{
-    ClassDB::bind_method(D_METHOD("get_min_speed"), &Mob::get_min_speed);
-    ClassDB::bind_method(D_METHOD("set_min_speed", "min_speed"), &Mob::set_min_speed);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "Min Speed"), "set_min_speed", "get_min_speed");
-
-    ClassDB::bind_method(D_METHOD("get_max_speed"), &Mob::get_max_speed);
-    ClassDB::bind_method(D_METHOD("set_max_speed", "max_speed"), &Mob::set_max_speed);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "Max Speed"), "set_max_speed", "get_max_speed");
-
-    ClassDB::bind_method(D_METHOD("_on_visible_on_screen_enabler_3d_screen_exited"), &Mob::_on_visible_on_screen_enabler_3d_screen_exited);
-
-    ADD_SIGNAL(MethodInfo("squashed"));
-}
-
 int Mob::get_min_speed() const 
 { 
     return this->min_speed; 
@@ -79,4 +64,19 @@ void Mob::squash()
 void Mob::_on_visible_on_screen_enabler_3d_screen_exited() 
 {
     queue_free();
+}
+
+void Mob::_bind_methods() 
+{
+    ClassDB::bind_method(D_METHOD("get_min_speed"), &Mob::get_min_speed);
+    ClassDB::bind_method(D_METHOD("set_min_speed", "min_speed"), &Mob::set_min_speed);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Min Speed"), "set_min_speed", "get_min_speed");
+
+    ClassDB::bind_method(D_METHOD("get_max_speed"), &Mob::get_max_speed);
+    ClassDB::bind_method(D_METHOD("set_max_speed", "max_speed"), &Mob::set_max_speed);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Max Speed"), "set_max_speed", "get_max_speed");
+
+    ClassDB::bind_method(D_METHOD("_on_visible_on_screen_enabler_3d_screen_exited"), &Mob::_on_visible_on_screen_enabler_3d_screen_exited);
+
+    ADD_SIGNAL(MethodInfo("squashed"));
 }

@@ -5,30 +5,6 @@
 
 using namespace godot;
 
-void Player::_bind_methods() 
-{
-    ClassDB::bind_method(D_METHOD("get_speed"), &Player::get_speed);
-    ClassDB::bind_method(D_METHOD("set_speed", "speed"), &Player::set_speed);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "Speed"), "set_speed", "get_speed");
-
-    ClassDB::bind_method(D_METHOD("get_fall_acceleration"), &Player::get_fall_acceleration);
-    ClassDB::bind_method(D_METHOD("set_fall_acceleration", "fall_acceleration"), &Player::set_fall_acceleration);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "Fall Acceleration"), "set_fall_acceleration", "get_fall_acceleration");
-    
-    ClassDB::bind_method(D_METHOD("get_jump_impulse"), &Player::get_jump_impulse);
-    ClassDB::bind_method(D_METHOD("set_jump_impulse", "jump_impulse"), &Player::set_jump_impulse);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "Jump Impulse"), "set_jump_impulse", "get_jump_impulse");
-    
-    ClassDB::bind_method(D_METHOD("get_bounce_impulse"), &Player::get_bounce_impulse);
-    ClassDB::bind_method(D_METHOD("set_bounce_impulse", "bounce_impulse"), &Player::set_bounce_impulse);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "Bounce Impulse"), "set_bounce_impulse", "get_bounce_impulse");
-
-    ClassDB::bind_method(D_METHOD("_on_mob_detector_body_entered", "body"), &Player::_on_mob_detector_body_entered);
-
-    ADD_SIGNAL(MethodInfo("hit"));
-
-}
-
 void Player::set_speed(const int speed) 
 { 
     this->speed = speed; 
@@ -151,4 +127,28 @@ void Player::_on_mob_detector_body_entered(Node3D* body)
     if (!this->is_on_wall()) {
        die();
     }
+}
+
+void Player::_bind_methods() 
+{
+    ClassDB::bind_method(D_METHOD("get_speed"), &Player::get_speed);
+    ClassDB::bind_method(D_METHOD("set_speed", "speed"), &Player::set_speed);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Speed"), "set_speed", "get_speed");
+
+    ClassDB::bind_method(D_METHOD("get_fall_acceleration"), &Player::get_fall_acceleration);
+    ClassDB::bind_method(D_METHOD("set_fall_acceleration", "fall_acceleration"), &Player::set_fall_acceleration);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Fall Acceleration"), "set_fall_acceleration", "get_fall_acceleration");
+    
+    ClassDB::bind_method(D_METHOD("get_jump_impulse"), &Player::get_jump_impulse);
+    ClassDB::bind_method(D_METHOD("set_jump_impulse", "jump_impulse"), &Player::set_jump_impulse);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Jump Impulse"), "set_jump_impulse", "get_jump_impulse");
+    
+    ClassDB::bind_method(D_METHOD("get_bounce_impulse"), &Player::get_bounce_impulse);
+    ClassDB::bind_method(D_METHOD("set_bounce_impulse", "bounce_impulse"), &Player::set_bounce_impulse);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "Bounce Impulse"), "set_bounce_impulse", "get_bounce_impulse");
+
+    ClassDB::bind_method(D_METHOD("_on_mob_detector_body_entered", "body"), &Player::_on_mob_detector_body_entered);
+
+    ADD_SIGNAL(MethodInfo("hit"));
+
 }

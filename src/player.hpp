@@ -11,9 +11,6 @@ namespace godot
 class Player : public CharacterBody3D 
 {
     GDCLASS(Player, CharacterBody3D)
-protected:
-    static void _bind_methods();
-
 private:
     Input* m_input;
 
@@ -46,6 +43,9 @@ public:
 
 private:
     void _on_mob_detector_body_entered(Node3D* body);
+
+protected:
+    static void _bind_methods();
 };
 
 }

@@ -9,9 +9,6 @@ namespace godot
 class MusicPlayer : public AudioStreamPlayer 
 {
     GDCLASS(MusicPlayer, AudioStreamPlayer)
-protected:
-    static void _bind_methods();
-
 public:
     void restart();
     void start_pitchdown();
@@ -19,6 +16,8 @@ public:
 private:
     void _on_pitch_down_timer_timeout();
 
+protected:
+    static void _bind_methods();
 };
 
 } // namespace godot

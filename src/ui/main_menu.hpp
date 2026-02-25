@@ -4,8 +4,8 @@
 #include <godot_cpp/classes/control.hpp>
 #include "../music_player.hpp"
 
-
-namespace godot {
+namespace godot 
+{
 class MainMenu: public Control 
 {
 	GDCLASS(MainMenu, Control);
@@ -21,6 +21,7 @@ public:
 protected:
 	static void _bind_methods();
 };
+
 } // namespace godot
 
 #endif

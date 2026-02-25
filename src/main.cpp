@@ -12,31 +12,7 @@
 #include <godot_cpp/classes/audio_stream_player.hpp>
 #include <godot_cpp/classes/color_rect.hpp>
 
-
 using namespace godot;
-
-void Main::_bind_methods() 
-{
-    ClassDB::bind_method(D_METHOD("get_mob_scene"), &Main::get_mob_scene);
-    ClassDB::bind_method(D_METHOD("set_mob_scene", "mob_scene"), &Main::set_mob_scene);
-    ADD_PROPERTY(
-        PropertyInfo(
-            Variant::OBJECT, 
-            "Mob Scene", 
-            PROPERTY_HINT_RESOURCE_TYPE, 
-            "PackedScene"
-        ), 
-        "set_mob_scene", 
-        "get_mob_scene"
-    );
-
-    ClassDB::bind_method(D_METHOD("_on_mob_timer_timeout"), &Main::_on_mob_timer_timeout);
-    ClassDB::bind_method(D_METHOD("_on_player_hit"), &Main::_on_player_hit);
-
-    ADD_SIGNAL(MethodInfo("game_over"));
-    ADD_SIGNAL(MethodInfo("mob_squashed"));
-    ClassDB::bind_method(D_METHOD("restart_game"), &Main::restart_game);
-}
 
 Ref<PackedScene> Main::get_mob_scene() const 
 { 
@@ -59,15 +35,13 @@ void Main::_unhandled_input(const Ref<InputEvent> &p_event)
     //     this->restart_game();
 }
 
-void Main::_on_mob_timer_timeout() 
+void Main::_on_mob_timer_timeout()
 {
-
     if (mob_scene.is_null()) {
         print_error("There is no mob_scene property set on Main scene!");
         return;
     }
         
-    
     Mob* mob = Object::cast_to<Mob>(mob_scene->instantiate());
 
     auto mob_spawn_location = get_node<PathFollow3D>("SpawnPath/SpawnLocation");
@@ -96,4 +70,27 @@ void Main::restart_game()
 {
     get_node<MusicPlayer>("/root/MusicPlayer")->restart();
     get_tree()->reload_current_scene();
+}
+
+void Main::_bind_methods() 
+{
+    ClassDB::bind_method(D_METHOD("get_mob_scene"), &Main::get_mob_scene);
+    ClassDB::bind_method(D_METHOD("set_mob_scene", "mob_scene"), &Main::set_mob_scene);
+    ADD_PROPERTY(
+        PropertyInfo(
+            Variant::OBJECT, 
+            "Mob Scene", 
+            PROPERTY_HINT_RESOURCE_TYPE, 
+            "PackedScene"
+        ), 
+        "set_mob_scene", 
+        "get_mob_scene"
+    );
+
+    ClassDB::bind_method(D_METHOD("_on_mob_timer_timeout"), &Main::_on_mob_timer_timeout);
+    ClassDB::bind_method(D_METHOD("_on_player_hit"), &Main::_on_player_hit);
+
+    ADD_SIGNAL(MethodInfo("game_over"));
+    ADD_SIGNAL(MethodInfo("mob_squashed"));
+    ClassDB::bind_method(D_METHOD("restart_game"), &Main::restart_game);
 }

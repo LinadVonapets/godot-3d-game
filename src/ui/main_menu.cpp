@@ -2,13 +2,14 @@
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/engine.hpp>
 
 using namespace godot;
 
-void MainMenu::_ready() 
+void MainMenu::_ready()
 {
 	this->music_player = get_node<MusicPlayer>("/root/MusicPlayer");
-	music_player->stop();	
+	music_player->stop();
 }
 
 void MainMenu::_on_new_game_button_down()
@@ -17,7 +18,7 @@ void MainMenu::_on_new_game_button_down()
 	music_player->play();
 }
 
-void MainMenu::_on_exit_button_down() 
+void MainMenu::_on_exit_button_down()
 {
 	get_tree()->quit();
 }

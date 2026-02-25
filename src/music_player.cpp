@@ -6,11 +6,6 @@
 
 using namespace godot;
 
-void MusicPlayer::_bind_methods() 
-{
-    ClassDB::bind_method(D_METHOD("_on_pitch_down_timer_timeout"), &MusicPlayer::_on_pitch_down_timer_timeout);
-}
-
 void MusicPlayer::restart() 
 {
     this->set_pitch_scale(1.0);
@@ -33,4 +28,9 @@ void MusicPlayer::_on_pitch_down_timer_timeout()
         this->stop();
         this->set_pitch_scale(1.0);
     }
+}
+
+void MusicPlayer::_bind_methods() 
+{
+    ClassDB::bind_method(D_METHOD("_on_pitch_down_timer_timeout"), &MusicPlayer::_on_pitch_down_timer_timeout);
 }
