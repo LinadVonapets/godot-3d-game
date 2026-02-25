@@ -5,14 +5,49 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4are2"]
 size = Vector3(1.5213928, 0.97579956, 1.9780121)
 
+[sub_resource type="Animation" id="Animation_4are2"]
+resource_name = "float"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2),
+"transitions": PackedFloat32Array(0.419, 2.06, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.65, 0), Vector3(0, 0.35, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Character:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 1.2),
+"transitions": PackedFloat32Array(0.419, 0.439, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.13962634, 0, 0), Vector3(-0.15707964, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsing"]
+_data = {
+&"float": SubResource("Animation_4are2")
+}
+
 [node name="Mob" type="Mob" unique_id=1617291046 groups=["mob"]]
-"Max Speed" = 15
 collision_layer = 2
 collision_mask = 0
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1866999453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21086287, 0)
 
 [node name="Character" parent="Pivot" unique_id=374268491 instance=ExtResource("1_4are2")]
+transform = Transform3D(1, 0, 0, 0, 0.9934453, 0.11430866, 0, -0.11430866, 0.9934453, 0, 0.60378426, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=296118315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015029907, 0.20491028, -0.012672424)
@@ -21,5 +56,9 @@ shape = SubResource("BoxShape3D_4are2")
 [node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." unique_id=727633267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008726358, 0.2982818, 0.29266727)
 aabb = AABB(-1.1664486, -0.5966342, -1.6720313, 2.3328972, 1.1932684, 3.3440626)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=183908812]
+libraries/ = SubResource("AnimationLibrary_bsing")
+autoplay = &"float"
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="_on_visible_on_screen_enabler_3d_screen_exited"]

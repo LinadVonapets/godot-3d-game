@@ -2,6 +2,7 @@
 
 #include <godot_cpp/core/math.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
 
 using namespace godot;
 
@@ -65,6 +66,8 @@ void Mob::initialize(Vector3 start_position, Vector3 player_position)
             get_rotation().y
         )
     );
+
+    get_node<AnimationPlayer>("AnimationPlayer")->set_speed_scale(random_speed / min_speed);
 }
 
 void Mob::squash() 
