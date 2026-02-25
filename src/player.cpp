@@ -124,6 +124,14 @@ void Player::_physics_process(double delta)
 
     set_velocity(target_velocity);
     move_and_slide();
+
+    auto pivot = get_node<Node3D>("Pivot");
+    auto new_pivot_rot = Vector3(
+        Math_PI/6.0f * get_velocity().y / jump_impulse,
+        pivot->get_rotation().y,
+        pivot->get_rotation().z
+    );
+    pivot->set_rotation(new_pivot_rot);
 }
 
 Player::Player() 
