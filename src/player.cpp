@@ -100,7 +100,8 @@ void Player::_physics_process(double delta)
         target_velocity.y -= fall_acceleration * (float)delta;
         
     }
-    if (m_input->is_action_just_pressed("jump"))
+
+    if (m_input->is_action_just_pressed("jump") && is_on_floor())
             target_velocity.y = jump_impulse;
     
     for(int index = 0; index < get_slide_collision_count(); index++) {
