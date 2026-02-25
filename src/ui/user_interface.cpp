@@ -18,7 +18,7 @@ void UserInterface::_ready()
 void UserInterface::_on_retry_button_pressed()
 {
 	emit_signal("on_retry_pressed");
-	retry->hide();
+	this->retry->hide();
 	this->score_label->show();
 }
 
