@@ -1,6 +1,7 @@
 #include "player.hpp"
 
 #include "mob.hpp"
+#include <godot_cpp/classes/animation_player.hpp>
 
 using namespace godot;
 
@@ -84,6 +85,12 @@ void Player::_physics_process(double delta)
     if (!direction.is_zero_approx()) {
         direction.normalize();
         get_node<Node3D>("Pivot")->set_basis(Basis::looking_at(direction));
+
+        get_node<AnimationPlayer>("AnimationPlayer")->set_speed_scale(4);
+    }
+    else
+    {
+        get_node<AnimationPlayer>("AnimationPlayer")->set_speed_scale(1);
     }
 
     target_velocity.x = direction.x * speed;
