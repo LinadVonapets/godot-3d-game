@@ -2,6 +2,7 @@
 
 #include "mob.hpp"
 #include <godot_cpp/classes/animation_player.hpp>
+#include <godot_cpp/classes/area3d.hpp>
 
 using namespace godot;
 
@@ -111,6 +112,18 @@ void Player::_physics_process(double delta)
     pivot->set_rotation(new_pivot_rot);
 }
 
+void Player::_unhandled_input(const Ref<InputEvent>& p_event) 
+{
+    if(p_event->is_action_pressed("immortal_player")) {
+        d_immortal = !d_immortal;
+        UtilityFunctions::print(
+            String("Player immortality toggled: {0}").format(
+                Array::make(this->d_immortal)
+            )
+        );
+    }
+}
+
 Player::Player() 
 {
     m_input = Input::get_singleton();
@@ -124,9 +137,8 @@ void Player::die()
 
 void Player::_on_mob_detector_body_entered(Node3D* body) 
 {
-    if (!this->is_on_wall()) {
-       die();
-    }
+    if (!this->d_immortal)
+       die();   
 }
 
 void Player::_bind_methods() 
