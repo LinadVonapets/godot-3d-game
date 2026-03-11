@@ -4,7 +4,7 @@ build-job:
   script:
     - git submodule update --init --recursive
     - pip install scons
-    - scons platform=linux -j16
+    - scons platform=linux -j$(nproc)
 
 test-job1:
   stage: test
