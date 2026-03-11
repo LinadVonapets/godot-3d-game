@@ -10,7 +10,7 @@ test-job1:
   
 test-job2:
   stage: test
-  sctipt:
+  script:
     - echo "This job tests something, but takes more time that test-job1."
     - echo "After the echo commands complete, it runs the sleep command for 20 seconds"
     - echo "which imulates a test that runs 20 seconds longer that test-job1"
