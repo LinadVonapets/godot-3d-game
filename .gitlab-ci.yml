@@ -2,6 +2,7 @@ build-job:
   stage: build
   image: python:3.12
   script:
+    - git submodule --init --recursive
     - pip install scons
     - scons platform=linux -j16
 
