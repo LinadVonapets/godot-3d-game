@@ -71,6 +71,15 @@ _data = {
 &"float": SubResource("Animation_g2els")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3vyb7"]
+direction = Vector3(0, 5, 5)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -15, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3vyb7"]
+size = Vector2(0.25, 0.25)
+
 [node name="Player" type="Player" unique_id=2044541285]
 collision_mask = 6
 
@@ -97,5 +106,12 @@ debug_color = Color(0, 0.5446318, 0.843156, 0.41960785)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=875175892]
 libraries/ = SubResource("AnimationLibrary_qhqgy")
 autoplay = &"float"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1392907413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018274345, 0.7373054)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_3vyb7")
+draw_pass_1 = SubResource("PlaneMesh_3vyb7")
 
 [connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]
