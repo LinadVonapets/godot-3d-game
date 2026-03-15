@@ -48,7 +48,7 @@ point_count = 4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=333271458]
 environment = SubResource("Environment_tefeu")
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=223241121]
+[node name="Ground" type="StaticBody3D" parent="." unique_id=223241121 groups=["ground"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 4
 collision_mask = 0
