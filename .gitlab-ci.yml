@@ -1,7 +1,8 @@
 build-job:
   stage: build
+  image: python:3.14
   script:
     - git submodule update --init --recursive
-    - apt install scons
+    - pip install scons
     - scons platform=linux -j$(nproc)
 
