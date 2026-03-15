@@ -22,6 +22,8 @@ private:
     int bounce_impulse = 16;
     Vector3 target_velocity;
 
+    Color color_of_floor;
+
     bool d_immortal = false;
 
 public:
@@ -36,6 +38,8 @@ public:
 
     void set_bounce_impulse(const int bounce_impulse);
     int get_bounce_impulse() const;
+
+    Color get_floor_color() const;
 
     void _physics_process(double delta) override;
 
