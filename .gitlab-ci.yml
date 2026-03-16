@@ -1,19 +1,36 @@
-cache:
-  key: compiled-bindings
-  paths:
-    - godot-cpp/bin/
+image: python3.14
+
+stages:
+  - build_bindings
+  - build_project
+
+before_script:
+  - pip install scons
 
 variables:
+  GODOT_CPP_PATH: godot-cpp
   GIT_SUBMODULE_STRATEGY: recursive
+
+cache:
+  key:
+    files:
+      - .gitmodules
+      - $GODOT_CPP_PATH/.git/HEAD
+  paths:
+    - $GODOT_CPP_PATH/bin/
+
+build_bindings:
+  stage: build_bindings
+  script:
+    - cd $GODOT_CPP_PATH
+    - scons platform=linux -j$(nproc)
+  artifacts:
+    paths:
+      - $GODOT_CPP_PATH/bin/
+    expires_in: 1 week
 
 build_project:
   stage: build
-  image: python:3.14
   script:
-    - git submodule update --init --recursive
-    - pip install scons
-    - cd godot-cpp
-    - scons platform=linux -j$(nproc)
-    - cd ..
     - scons platform=linux -j$(nproc)
 
