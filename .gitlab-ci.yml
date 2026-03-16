@@ -1,8 +1,20 @@
-build-job:
+image: python3.14
+
+cache:
+  key: compiled-bindings
+  paths:
+    - godot-cpp/bin/
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+build_project:
   stage: build
-  image: python:3.14
   script:
     - git submodule update --init --recursive
     - pip install scons
+    - cd godot-cpp
+    - scons platform=linux -j(nproc)
+    - cd ..
     - scons platform=linux -j$(nproc)
 
