@@ -29,7 +29,7 @@ build_bindings:
       - $GODOT_CPP_PATH/bin/
 
 build_project:
-  stage: build
+  stage: build_project
   needs: ["build_bindings"]
   script:
     - scons platform=linux -j$(nproc)
