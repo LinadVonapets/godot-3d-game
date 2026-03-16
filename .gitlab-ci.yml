@@ -1,5 +1,3 @@
-image: python3.14
-
 cache:
   key: compiled-bindings
   paths:
@@ -10,6 +8,7 @@ variables:
 
 build_project:
   stage: build
+  image: python3.14
   script:
     - git submodule update --init --recursive
     - pip install scons
