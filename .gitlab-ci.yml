@@ -13,7 +13,7 @@ build_project:
     - git submodule update --init --recursive
     - pip install scons
     - cd godot-cpp
-    - scons platform=linux -j(nproc)
+    - scons platform=linux -j$(nproc)
     - cd ..
     - scons platform=linux -j$(nproc)
 
