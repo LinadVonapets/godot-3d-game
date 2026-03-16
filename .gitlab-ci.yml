@@ -27,7 +27,6 @@ build_bindings:
   artifacts:
     paths:
       - $GODOT_CPP_PATH/bin/
-    expires_in: 1 week
 
 build_project:
   stage: build
