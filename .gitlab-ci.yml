@@ -15,6 +15,7 @@ cache:
   paths:
     - $GODOT_CPP_PATH/bin/
     - $GODOT_CPP_PATH/gen/
+    - $GODOT_CPP_PATH/src/
     - .sconsign.dblite
 
 build_project:
