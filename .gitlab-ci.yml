@@ -8,7 +8,7 @@ variables:
 
 build_project:
   stage: build
-  image: python3.14
+  image: python:3.14
   script:
     - git submodule update --init --recursive
     - pip install scons
