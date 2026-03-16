@@ -14,12 +14,11 @@ cache:
       - $GODOT_CPP_PATH/.git/HEAD
   paths:
     - $GODOT_CPP_PATH/bin/
+    - $GODOT_CPP_PATH/gen/
+    - .sconsign.dblite
 
 build_project:
   stage: build
   script:
-    - cd $GODOT_CPP_PATH
-    - scons platform=linux -j$(nproc)
-    - cd ..
     - scons platform=linux -j$(nproc)
 
