@@ -6,48 +6,39 @@
 
 using namespace godot;
 
-void Player::set_speed(const int speed) 
-{ 
+void Player::set_speed(const int speed) {
     this->speed = speed; 
 }
 
-int Player::get_speed() const 
-{ 
+int Player::get_speed() const {
     return this->speed; 
-}  
+}
 
-void Player::set_fall_acceleration(const int fall_acceleration) 
-{ 
+void Player::set_fall_acceleration(const int fall_acceleration) {
     this->fall_acceleration = fall_acceleration; 
 }
 
-int Player::get_fall_acceleration() const 
-{
+int Player::get_fall_acceleration() const {
     return this->fall_acceleration;
 }
 
-void Player::set_jump_impulse(const int jump_impulse) 
-{ 
+void Player::set_jump_impulse(const int jump_impulse) {
     this->jump_impulse = jump_impulse; 
 }
 
-int Player::get_jump_impulse() const 
-{ 
+int Player::get_jump_impulse() const {
     return this->jump_impulse; 
 }
 
-void Player::set_bounce_impulse(const int bounce_impulse) 
-{ 
+void Player::set_bounce_impulse(const int bounce_impulse) {
     this->bounce_impulse = bounce_impulse; 
 }
 
-int Player::get_bounce_impulse() const 
-{ 
+int Player::get_bounce_impulse() const {
     return this->bounce_impulse; 
 }
 
-void Player::_physics_process(double delta) 
-{
+void Player::_physics_process(double delta) {
     Vector3 direction;
 
     if (m_input->is_action_pressed("move_right"))
@@ -124,25 +115,21 @@ void Player::_unhandled_input(const Ref<InputEvent>& p_event)
     }
 }
 
-Player::Player() 
-{
+Player::Player() {
     m_input = Input::get_singleton();
 }
 
-void Player::die() 
-{
+void Player::die() {
     emit_signal("hit");
     queue_free();
 }
 
-void Player::_on_mob_detector_body_entered(Node3D* body) 
-{
+void Player::_on_mob_detector_body_entered(Node3D* body) {
     if (!this->d_immortal)
-       die();   
+       die();
 }
 
-void Player::_bind_methods() 
-{
+void Player::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_speed"), &Player::get_speed);
     ClassDB::bind_method(D_METHOD("set_speed", "speed"), &Player::set_speed);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "Speed"), "set_speed", "get_speed");
@@ -162,5 +149,4 @@ void Player::_bind_methods()
     ClassDB::bind_method(D_METHOD("_on_mob_detector_body_entered", "body"), &Player::_on_mob_detector_body_entered);
 
     ADD_SIGNAL(MethodInfo("hit"));
-
 }

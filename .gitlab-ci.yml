@@ -1,8 +1,25 @@
-build-job:
+image: python:3.14
+
+before_script:
+  - pip install scons
+
+variables:
+  GODOT_CPP_PATH: godot-cpp
+  GIT_SUBMODULE_STRATEGY: recursive
+
+cache:
+  key:
+    files:
+      - .gitmodules
+      - $GODOT_CPP_PATH/.git/HEAD
+  paths:
+    - $GODOT_CPP_PATH/bin/
+    - $GODOT_CPP_PATH/gen/
+    - $GODOT_CPP_PATH/src/
+    - .sconsign.dblite
+
+build_project:
   stage: build
-  image: python:3.14
   script:
-    - git submodule update --init --recursive
-    - pip install scons
     - scons platform=linux -j$(nproc)
 
