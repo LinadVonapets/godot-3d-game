@@ -1,9 +1,5 @@
 image: python:3.14
 
-stages:
-  - build_bindings
-  - build_project
-
 before_script:
   - pip install scons
 
@@ -19,18 +15,11 @@ cache:
   paths:
     - $GODOT_CPP_PATH/bin/
 
-build_bindings:
-  stage: build_bindings
+build_project:
+  stage: build
   script:
     - cd $GODOT_CPP_PATH
     - scons platform=linux -j$(nproc)
-  artifacts:
-    paths:
-      - $GODOT_CPP_PATH/bin/
-
-build_project:
-  stage: build_project
-  needs: ["build_bindings"]
-  script:
+    - cd ..
     - scons platform=linux -j$(nproc)
 
